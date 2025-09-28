@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMAS Academy - Transforming Education</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section:nth-child(even) {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .section:nth-child(odd) {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+
+        /* Our Story Section */
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            color: white;
+        }
+
+        .story-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .story-image {
+            text-align: center;
+        }
+
+        .story-image div {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            border-radius: 20px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Books Section */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .book-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .book-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .book-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .book-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Success Stories */
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .story-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            position: relative;
+        }
+
+        .story-card::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            opacity: 0.3;
+        }
+
+        .story-text {
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .story-author {
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        /* Impact Numbers */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .impact-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .impact-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ffd700;
+            margin-bottom: 0.5rem;
+        }
+
+        .impact-label {
+            font-size: 1.1rem;
+        }
+
+        /* Discord Section */
+        .discord-section {
+            text-align: center;
+            color: white;
+        }
+
+        .discord-button {
+            background: #7289da;
+            color: white;
+            padding: 1.5rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s ease, transform 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .discord-button:hover {
+            background: #5b6eae;
+            transform: translateY(-2px);
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background: none;
+            border: none;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-answer {
+            padding: 0 2rem 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .story-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">TMAS Academy</div>
+            <ul class="nav-links">
+                <li><a href="#story">Our Story</a></li>
+                <li><a href="#books">Free Books</a></li>
+                <li><a href="#success">Success Stories</a></li>
+                <li><a href="#impact">Our Impact</a></li>
+                <li><a href="#discord">Join Discord</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to TMAS Academy</h1>
+        </div>
+    </section>
+
+    <!-- Our Story and Mission -->
+    <section id="story" class="section">
+        <div class="container">
+            <h2 class="section-title">Our Story & Mission</h2>
+            <div class="story-content">
+                <div class="story-text">
+                    <p>TMAS Academy (The Math and Science Academy) is dedicated to providing high-quality, 
+            accessible educational resources for students preparing for AP exams and math competitions 
+            like the AMC 10/12. Founded by Ritvik Rustagi in 2021, TMAS offers several free books covering 
+            AP Calculus, AP Physics, and competitive math. Our mission is to make learning efficient and engaging 
+            through concise books, rapid review videos, and a supportive Discord community. We believe in making 
+            quality education accessible to all students, regardless of their background, by providing exceptional 
+            resources in math and science.</p>
+                </div>
+                <div class="story-image">
+                    <div>🎓</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Free Books Section -->
+    <section id="books" class="section">
+        <div class="container">
+            <h2 class="section-title">TMAS Academy's Free Books</h2>
+            <div class="books-grid">
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section id="success" class="section">
+        <div class="container">
+            <h2 class="section-title">Success Stories from Students</h2>
+            <div class="stories-grid">
+                <div class="story-card">
+                    <div class="story-text">Quote</div>
+                    <div class="story-author">student</div>
+                </div>
+                <div class="story-card">
+                    <div class="story-text">Quote</div>
+                    <div class="story-author">student</div>
+                </div>
+                <div class="story-card">
+                    <div class="story-text">Quote</div>
+                    <div class="story-author">student</div>
+                </div>
+                <div class="story-card">
+                    <div class="story-text">Quote</div>
+                    <div class="story-author">student</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Impact in Numbers -->
+    <section id="impact" class="section">
+        <div class="container">
+            <h2 class="section-title">Our Impact in Numbers</h2>
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <div class="impact-number">#####</div>
+                    <div class="impact-label">Students Reached</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number">###</div>
+                    <div class="impact-label">Free Books Published</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number">###%</div>
+                    <div class="impact-label">Student Satisfaction Rate</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number">####$</div>
+                    <div class="impact-label">Saved in Education Costs</div>
+                </div>
+                <div class="impact-item">
+                    <div class="impact-number">24/7</div>
+                    <div class="impact-label">Community Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discord Section -->
+    <section id="discord" class="section discord-section">
+        <div class="container">
+            <h2 class="section-title">Join TMAS Academy's Discord</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; color: rgba(255, 255, 255, 0.9);">
+                Connect with thousands of students worldwide, get study help, share resources, and be part of our incredible learning community!
+            </p>
+            <div style="display: flex; gap: 2rem; justify-content: center; align-items: center; flex-wrap: wrap;">
+                <div>
+                    <h3 style="margin-bottom: 0.5rem;">📚 Study Groups</h3>
+                    <p>Join subject-specific channels</p>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 0.5rem;">💡 Get Help</h3>
+                    <p>Ask questions anytime</p>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 0.5rem;">🎉 Events</h3>
+                    <p>Live study sessions & workshops</p>
+                </div>
+            </div>
+            <a href="#" class="discord-button">Join Our Discord Server</a>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: rgba(0, 0, 0, 0.3); color: white; text-align: center; padding: 2rem 0;">
+        <div class="container">
+            <p>&copy; 2025 TMAS Academy. Empowering education for all.</p>
+            <p style="margin-top: 0.5rem; opacity: 0.8;">Made with passion for students worldwide</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('span');
+                
+                // Close all other FAQ items
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    if (ans !== answer) {
+                        ans.classList.remove('active');
+                    }
+                });
+                
+                document.querySelectorAll('.faq-question span').forEach(ic => {
+                    if (ic !== icon) {
+                        ic.textContent = '+';
+                    }
+                });
+                
+                // Toggle current FAQ item
+                answer.classList.toggle('active');
+                icon.textContent = answer.classList.contains('active') ? '−' : '+';
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Animate impact numbers on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const numbers = entry.target.querySelectorAll('.impact-number');
+                    numbers.forEach(num => {
+                        const finalValue = num.textContent;
+                        const numericValue = parseInt(finalValue.replace(/[^\d]/g, ''));
+                        if (numericValue) {
+                            animateNumber(num, 0, numericValue, finalValue);
+                        }
+                    });
+                }
+            });
+        }, observerOptions);
+
+        const impactSection = document.querySelector('#impact');
+        if (impactSection) {
+            observer.observe(impactSection);
+        }
+
+        function animateNumber(element, start, end, originalText) {
+            const duration = 2000;
+            const startTime = Date.now();
+            
+            const animate = () => {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                const current = Math.floor(start + (end - start) * progress);
+                element.textContent = originalText.replace(/[\d,]+/, current.toLocaleString());
+                
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                }
+            };
+            
+            animate();
+        }
+    </script>
+</body>
+</html>
