@@ -11,10 +11,10 @@ export default function TMASHomepage() {
             The Math and Science Academy
           </h1>
           <p className="text-lg md:text-xl text-slate-600 max-w-2xl leading-relaxed">
-            TMAS is amazing in empowering students with high-quality, free educational resources 
+            TMAS empowers students with high-quality, free educational resources 
             that make advanced math and science accessible to everyone.
           </p>
-          
+
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-3 pt-2">
             <button className="px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white font-medium rounded transition-colors">
@@ -33,19 +33,19 @@ export default function TMASHomepage() {
             <div className="text-2xl font-semibold text-slate-900">10+</div>
             <div className="text-sm text-slate-600">Free Books</div>
           </div>
-          
+
           <div className="space-y-2 text-center">
             <FileText className="w-8 h-8 text-slate-700 mx-auto" />
             <div className="text-2xl font-semibold text-slate-900">1000+</div>
             <div className="text-sm text-slate-600">Practice Problems</div>
           </div>
-          
+
           <div className="space-y-2 text-center">
             <Users className="w-8 h-8 text-slate-700 mx-auto" />
             <div className="text-2xl font-semibold text-slate-900">500+</div>
             <div className="text-sm text-slate-600">Discord Members</div>
           </div>
-          
+
           <div className="space-y-2 text-center">
             <Calendar className="w-8 h-8 text-slate-700 mx-auto" />
             <div className="text-2xl font-semibold text-slate-900">2021</div>
