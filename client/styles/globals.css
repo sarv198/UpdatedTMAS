@@ -1,4 +1,12 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+body {
+  font-family: "Times New Roman", Times, serif;
+  background-color: #ffffff;
+  color: inherit;
+}
+
+html {
+  background-color: #ffffff;
+}
 

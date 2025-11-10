@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { BookOpen, Users, Calendar, FileText } from 'lucide-react';
 
 export default function TMASHomepage() {
@@ -17,10 +18,13 @@ export default function TMASHomepage() {
           
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-3 pt-2">
-            <button className="px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white font-medium rounded transition-colors">
-              Explore FREE Resources
-            </button>
-            <button className="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded transition-colors">
+            <Link
+              href="/books"
+              className="px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white font-medium rounded transition-colors inline-flex items-center justify-center"
+            >
+              Explore FREE Books
+            </Link>
+            <button className="px-6 py-3 bg-blue-600 hover:bg-indigo-700 text-white font-medium rounded transition-colors">
               Join Community
             </button>
           </div>
